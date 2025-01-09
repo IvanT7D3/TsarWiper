@@ -66,7 +66,7 @@ void ListFilesRecursively(const char *Path)
 	FindFile = FindFirstFileA(SearchPath, &FindFileData);
 	if (FindFile == INVALID_HANDLE_VALUE)
 	{
-		printf("Err_SearchDir. Code_GLE: %ld\n", Path, GetLastError());
+		printf("Err_SearchDir: %s | Code_GLE: %ld\n", Path, GetLastError());
 		return;
 	}
 
@@ -100,7 +100,7 @@ int DestroyFile(const char *NewPathToFile)
 
 	if (File == INVALID_HANDLE_VALUE)
 	{
-		printf("Err_OpenFile. Code_GLE: %ld\n", NewPathToFile, GetLastError());
+		printf("Err_OpenFile: %s | Code_GLE: %ld\n", NewPathToFile, GetLastError());
 		printf("Exiting Destruction Of File!\n");
 		return EXIT_FAILURE;
 	}
@@ -110,7 +110,7 @@ int DestroyFile(const char *NewPathToFile)
 	if (SizeToOverwrite == INVALID_FILE_SIZE)
 	{
 		CloseHandle(File);
-		printf("Err_GetFileSize. Code_GLE: %ld\n", NewPathToFile, GetLastError());
+		printf("Err_GetFileSize: %s | Code_GLE: %ld\n", NewPathToFile, GetLastError());
 		printf("Exiting Destruction Of File!\n");
 		return EXIT_FAILURE;
 	}
@@ -129,7 +129,7 @@ int DestroyFile(const char *NewPathToFile)
 	if (Overwrite == 0)
 	{
 		CloseHandle(File);
-		printf("Err_WriteFile. Code_GLE: %ld\n", NewPathToFile, GetLastError());
+		printf("Err_WriteFile: %s | Code_GLE: %ld\n", NewPathToFile, GetLastError());
 		printf("Exiting Destruction Of File!\n");
 		return EXIT_FAILURE;
 	}
@@ -141,7 +141,7 @@ int DestroyFile(const char *NewPathToFile)
 	if (DeleteFileA(NewPathToFile) == 0)
 	{
 		CloseHandle(File);
-		printf("Err_DeleteFileA. Code_GLE: %ld\n", NewPathToFile, GetLastError());
+		printf("Err_DeleteFileA: %s | Code_GLE: %ld\n", NewPathToFile, GetLastError());
 		printf("Exiting Destruction Of File!\n");
 		return EXIT_FAILURE;
 	}
